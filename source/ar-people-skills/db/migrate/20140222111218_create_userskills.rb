@@ -1,7 +1,9 @@
-class CreateUserSkills < ActiveRecord::Migration
+class CreateUserskills < ActiveRecord::Migration
   def change
-    t.belongs_to :user_id
-    t.belongs_to :skill_id
-    t.integer :rating
+    create_table :userskills do |t|
+      t.belongs_to :user
+      t.belongs_to :skill
+      t.integer :proficiency
+    end
   end
 end
