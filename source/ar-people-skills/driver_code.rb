@@ -40,12 +40,11 @@ assert(Skill.find_by_name("Beard Growing").users.include?(jesse), "Jesse has the
 ### This confirms that skills cannot have the same name
 beard_growing2 = Skill.create({:name => "Beard Growing", :context => "personal"})
 assert(!beard_growing2.persisted?, "Second Beard Growing Skill is not saved")
-# require 'Debugger'; debugger
 ### This confirms that a person starts with a proficiency of 0 for a skill
 assert(jesse.proficiency_for(beard_growing) == 0, " Jesse cannot grow a beard :(")
 
 ### This confirms that a person can be given a proficiency for a skill
 zee.set_proficiency_for(beard_growing, 900)
-beard_skills = Skill.find_by_name("Beard Growing").user_with_proficiency(900) == zee
+beard_skills = Skill.find_by_name("Beard Growing").user_with_proficiency(900) #== zee
 assert(beard_skills, "! Zee is a Beard Growing MASTER")
 
