@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   end
 
   def set_proficiency_for(skill_we_want, new_proficiency)
-    skill_to_update = self.userskills.find_by_skill_id(skill_we_want.id)
-    skill_to_update.proficiency = new_proficiency
+    self.userskills.find_by_skill_id(skill_we_want.id).update_attributes( proficiency: new_proficiency)
   end
 
 end
